@@ -1,28 +1,17 @@
 const form = document.querySelector("#waitlist-form");
 const emailInput = document.querySelector("#email");
 const statusEl = document.querySelector("#form-status");
-const STORAGE_KEY = "orpheus_waitlist_emails";
 
-function readEmails() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    return Array.isArray(saved) ? saved : [];
-  } catch {
-    return [];
-  }
-}
+const SUPABASE_URL = "https://liclnxsbjjdkaxzdxmnb.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_uWY31EfPbX7TIi0nTxVKiA_bGI_AbCv";
 
 function setStatus(message, state) {
   form.classList.remove("is-error", "is-success");
-
-  if (state) {
-    form.classList.add(`is-${state}`);
-  }
-
+  if (state) form.classList.add(`is-${state}`);
   statusEl.textContent = message;
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = emailInput.value.trim().toLowerCase();
@@ -33,13 +22,23 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  const emails = readEmails();
+  setStatus("Submitting...", null);
 
-  if (!emails.includes(email)) {
-    emails.push(email);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(emails));
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/notify-waitlist`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!res.ok) throw new Error("Submission failed");
+
+    emailInput.value = "";
+    setStatus("Access request logged. Welcome to the ORPHEUS waitlist.", "success");
+  } catch {
+    setStatus("Something went wrong. Try again.", "error");
   }
-
-  emailInput.value = "";
-  setStatus("Access request logged. Welcome to the ORPHEUS waitlist.", "success");
 });
