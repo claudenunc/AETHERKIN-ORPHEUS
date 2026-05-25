@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ORPHEUS AI Architect | Join the Waitlist</title>
+    <meta
+      name="description"
+      content="ORPHEUS is a personal AI system builder and optimization partner for creators building sovereign multi-agent systems."
+    >
+    <meta name="theme-color" content="#02050c">
+    <meta property="og:title" content="ORPHEUS AI Architect">
+    <meta
+      property="og:description"
+      content="Build sovereign AI systems, optimize local infrastructure, and architect multi-agent workflows."
+    >
+    <meta property="og:image" content="assets/orpheus-dashboard.png">
+    <meta property="og:type" content="website">
+    <link rel="preload" as="image" href="assets/orpheus-dashboard.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="page-shell" aria-labelledby="page-title">
+      <h1 id="page-title" class="sr-only">ORPHEUS AI Architect waitlist</h1>
+
+      <section class="hero" aria-label="ORPHEUS AI Architect landing page">
+        <div class="dashboard-stage">
+          <img
+            class="dashboard-art"
+            src="assets/orpheus-dashboard.png"
+            width="1536"
+            height="1024"
+            alt="ORPHEUS AI Architect dashboard with multi-agent workflow, optimization metrics, GitHub integration, and waitlist call to action."
+          >
+        </div>
+
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <label class="sr-only" for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            inputmode="email"
+            placeholder="ENTER YOUR EMAIL"
+            required
+            aria-describedby="form-status"
+          >
+          <button type="submit">
+            <span>JOIN THE WAITLIST</span>
+            <span aria-hidden="true">-&gt;</span>
+          </button>
+        </form>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+        <section class="mobile-summary" aria-label="ORPHEUS summary">
+          <p>ORPHEUS helps creators and builders take control of their AI stack with multi-agent system design, local optimization, and advanced configuration workflows.</p>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
