@@ -32,27 +32,27 @@
             height="1024"
             alt="ORPHEUS AI Architect dashboard with multi-agent workflow, optimization metrics, GitHub integration, and waitlist call to action."
           >
+          <div class="form-cover">
+            <form class="waitlist-form" id="waitlist-form" novalidate>
+              <label class="sr-only" for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                inputmode="email"
+                placeholder="ENTER YOUR EMAIL"
+                required
+                aria-describedby="form-status"
+              >
+              <button type="submit">
+                <span>JOIN THE WAITLIST</span>
+                <span aria-hidden="true">-&gt;</span>
+              </button>
+            </form>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </div>
         </div>
-
-        <form class="waitlist-form" id="waitlist-form" novalidate>
-          <label class="sr-only" for="email">Email address</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            inputmode="email"
-            placeholder="ENTER YOUR EMAIL"
-            required
-            aria-describedby="form-status"
-          >
-          <button type="submit">
-            <span>JOIN THE WAITLIST</span>
-            <span aria-hidden="true">-&gt;</span>
-          </button>
-        </form>
-
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
 
         <section class="mobile-summary" aria-label="ORPHEUS summary">
           <p>ORPHEUS helps creators and builders take control of their AI stack with multi-agent system design, local optimization, and advanced configuration workflows.</p>
